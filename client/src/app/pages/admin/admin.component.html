@@ -3,10 +3,7 @@
         <ng-template pTemplate="left">
             <button pButton label="New" icon="pi pi-plus" (click)="openNew()"></button>
         </ng-template>
-    </p-toolbar>
-    
-    <p-table [value]="products" [rows]="5" [paginator]="true" [rowHover]="true">
-        <ng-template pTemplate="caption">
+        <ng-template pTemplate="right">
             <div class="flex align-items-center justify-content-end">
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
@@ -14,6 +11,9 @@
                 </span>
             </div>
         </ng-template>
+    </p-toolbar>
+    
+    <p-table [value]="products" [rows]="5" [paginator]="true" [rowHover]="true">
         <ng-template pTemplate="header">
             <tr>
                 <th></th>

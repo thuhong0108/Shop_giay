@@ -22,7 +22,8 @@
                 </div>
                  <div class="detail__buy">
                      <p-inputNumber [(ngModel)]="quantity" [min]="1" [max]="10" class="detail__quantity"></p-inputNumber>
-                    <button pButton [disabled]="!sizeSelected || !quantity" label="MUA NGAY" class="detail__submit" (click)="hanldeAddToCart()"></button>
+                    <button pButton [disabled]="!sizeSelected || !quantity" label="THÊM VÀO GIỎ HÀNG" 
+                    class="detail__submit" (click)="hanldeAddToCart()"></button>
                  </div>
             </div>
         </div>

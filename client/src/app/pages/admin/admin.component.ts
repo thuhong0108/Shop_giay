@@ -110,7 +110,7 @@ export class AdminComponent implements OnInit {
 
   handleDeleteProduct(id: string) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete user?',
+      message: 'Are you sure you want to delete product?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
