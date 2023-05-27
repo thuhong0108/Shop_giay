@@ -8,10 +8,12 @@ import { DetailProductComponent } from './pages/detail-product/detail-product.co
 import { HomeComponent } from './pages/home/home.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { SignupFormComponent } from './pages/signup-form/signup-form.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'product/:id', component: DetailProductComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'signup', component: SignupFormComponent },

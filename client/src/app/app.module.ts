@@ -34,6 +34,7 @@ import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { SignupFormComponent } from './pages/signup-form/signup-form.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { FooterComponent } from './component/footer/footer.component';
     LoginFormComponent,
     SignupFormComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

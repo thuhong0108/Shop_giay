@@ -1,5 +1,8 @@
 export interface User {
     _id: string,
     username: string,
-    isAdmin: boolean
+    password: string,
+    isAdmin: boolean,
+    phone?: string,
+    address?: string
 }

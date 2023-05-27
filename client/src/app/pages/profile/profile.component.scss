@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 50px 70px;
+    border: 2px solid #dcdada;
+
+    h2 {
+        color: rgb(0, 177, 86);
+        font-size: 23px;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: inline-block;
+        width: 120px;
+    }
+
+    input, textarea {
+        width: 300px;
+    }
+
+    .button {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .error {
+        color: red;
+        margin-left: 120px;
+        display: block;
+        margin-top: 10px;
+    }
+}

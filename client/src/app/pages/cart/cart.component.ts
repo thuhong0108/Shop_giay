@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { CART_KEY } from 'src/app/constants';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,9 +24,11 @@ export class CartComponent implements OnInit {
   searchValue = ''
 
   constructor(
-    private productService: ProductService, 
+    private productService: ProductService,
+    private userService: UserService,
     private cartService: CartService, 
     public confirmationService: ConfirmationService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -74,14 +78,21 @@ export class CartComponent implements OnInit {
   }
 
   handlePayment(): void {
+    const user = this.userService.getUserStorage()
+    if (!user) {
+      this.router.navigateByUrl('/login')
+    }
+
     this.confirmationService.confirm({
       message: 'Are you sure you want to pay for all products?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {   
-        localStorage.removeItem(CART_KEY)  
         this.cartList = []
         this.cartListTemp = []
+
+        this.cartService.cartQuantity$.next(0)
+        localStorage.removeItem(CART_KEY)  
 
         this.productService.displayMessage('Successful payment', 'Successfully')
       }

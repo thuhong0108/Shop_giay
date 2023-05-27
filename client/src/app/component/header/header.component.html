@@ -24,7 +24,7 @@
 
     <ng-template #logged>
         <div class="header__user">
-            <p>{{user?.username}}</p>
+            <a (click)="handleNavigateProfile()">{{user?.username}}</a>
             <button pButton type="button" label="Đăng xuất" class="p-button-text" (click)="handleLogout()"></button>
         </div>
     </ng-template>

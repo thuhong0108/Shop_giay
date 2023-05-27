@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { USER_KEY } from 'src/app/constants';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -20,6 +21,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private authService: AuthService, 
+    private userService: UserService, 
     private messageService: MessageService,
     private router: Router
     ) {}
@@ -36,7 +38,7 @@ export class LoginFormComponent implements OnInit {
       next: (res: any) => {
         const user = res.data as User
         localStorage.setItem(USER_KEY, JSON.stringify(user))
-        this.authService.loggedInUser.next(user)
+        this.userService.loggedInUser$.next(user)
 
         if (user.isAdmin) {
           this.router.navigate(['/admin'])

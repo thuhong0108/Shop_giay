@@ -50,10 +50,14 @@
         display: flex;
         align-items: center;
         
-        p {
+        a {
             padding-right: 8px;
             border-right: 1px solid gray;
             color: white;
+
+            &:hover {
+                color: rgb(0, 177, 86);
+            }
         }
 
         button {
