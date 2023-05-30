@@ -81,22 +81,25 @@ export class CartComponent implements OnInit {
     const user = this.userService.getUserStorage()
     if (!user) {
       this.router.navigateByUrl('/login')
+    } else if(!user.phone || !user.address){
+      this.router.navigateByUrl(`/profile/${user._id}`)
+    } else {
+      this.confirmationService.confirm({
+        message: 'Are you sure you want to pay for all products?',
+        header: 'Confirm',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {   
+          this.cartList = []
+          this.cartListTemp = []
+  
+          this.cartService.cartQuantity$.next(0)
+          localStorage.removeItem(CART_KEY)  
+  
+          this.productService.displayMessage('Successful payment', 'Successfully')
+        }
+      })
     }
 
-    this.confirmationService.confirm({
-      message: 'Are you sure you want to pay for all products?',
-      header: 'Confirm',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {   
-        this.cartList = []
-        this.cartListTemp = []
-
-        this.cartService.cartQuantity$.next(0)
-        localStorage.removeItem(CART_KEY)  
-
-        this.productService.displayMessage('Successful payment', 'Successfully')
-      }
-    })
   }
 
   handleSearchChange(e: any): void {
