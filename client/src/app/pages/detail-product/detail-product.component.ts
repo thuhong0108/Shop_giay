@@ -40,8 +40,8 @@ export class DetailProductComponent implements OnInit {
   }
 
   hanldeAddToCart() {
-    if (this.quantity > 10) {
-      this.productService.displayMessage('Quantity must be 10 or less', 'Error', 'error')
+    if (this.quantity < 1 || this.quantity > 10) {
+      this.productService.displayMessage('Quantity must be from 1 to 10', 'Error', 'error')
       return
     }
 
