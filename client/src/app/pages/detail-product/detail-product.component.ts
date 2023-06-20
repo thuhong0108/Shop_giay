@@ -31,7 +31,7 @@ export class DetailProductComponent implements OnInit {
   getProduct() {
     let id = this.route.snapshot.paramMap.get('id')
     this.productService.getProduct(id).subscribe(res => {
-      this.product = res.data as Product
+      this.product = res.data
     })
   }
 
@@ -40,6 +40,11 @@ export class DetailProductComponent implements OnInit {
   }
 
   hanldeAddToCart() {
+    if (this.quantity > 10) {
+      this.productService.displayMessage('Quantity must be 10 or less', 'Error', 'error')
+      return
+    }
+
     this.cartList = this.cartService.getCartListStorage()
     const product = this.cartList.find(item => item._id === this.product._id && item.size === this.sizeSelected)
     
